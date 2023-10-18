@@ -1,13 +1,14 @@
 package com.example.mad_practical_9_21012011052
 
+import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
+import android.view.animation.Animation
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
-
 
 class SplashActivity : AppCompatActivity() {
     lateinit var logoanimation: AnimationDrawable
@@ -24,6 +25,22 @@ class SplashActivity : AppCompatActivity() {
         val myAnimation = AnimationUtils.loadAnimation(this, R.anim.twin_animation)
         logo1.startAnimation(myAnimation)
 
+        // Add an animation listener to your animation
+        myAnimation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation) {
+                // Animation started
+            }
+
+            override fun onAnimationEnd(animation: Animation) {
+                // Animation ended, start a new activity here
+                val intent = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(intent)
+            }
+
+            override fun onAnimationRepeat(animation: Animation) {
+                // Animation repeated
+            }
+        })
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
