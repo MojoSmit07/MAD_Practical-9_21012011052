@@ -28,17 +28,14 @@ class SplashActivity : AppCompatActivity() {
         // Add an animation listener to your animation
         myAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {
-                // Animation started
             }
 
             override fun onAnimationEnd(animation: Animation) {
-                // Animation ended, start a new activity here
                 val intent = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(intent)
             }
 
             override fun onAnimationRepeat(animation: Animation) {
-                // Animation repeated
             }
         })
     }
